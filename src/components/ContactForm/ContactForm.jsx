@@ -17,9 +17,9 @@ import *as yup from 'yup'
         number:''
 }
 
-const FormError = (props) => {
+const FormError = ({name}) => {
     return (<ErrorMessage
-        name={props.name}
+        name={name}
         render={message =>(<ErrorText> {message}</ErrorText>)}
     />)
 }
