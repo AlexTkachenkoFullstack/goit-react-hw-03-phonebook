@@ -4,7 +4,8 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter';
 import { nanoid } from 'nanoid'
-import { AppContainer,ApiTitleH1, ApiTitleH2 } from './App.styled';
+import { AppContainer, ApiTitleH1, ApiTitleH2 } from './App.styled';
+const KEY='contacts'
 class App extends Component {
   state = {
   contacts: [{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -15,7 +16,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    const contacts = JSON.parse(localStorage.getItem(KEY));
     if (contacts) {
      this.setState({contacts})
     }
@@ -23,7 +24,7 @@ class App extends Component {
 
   componentDidUpdate(_, prevState) {
     if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+      localStorage.setItem(KEY, JSON.stringify(this.state.contacts))
     }
 }
 
